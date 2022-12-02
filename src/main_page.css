@@ -1,0 +1,155 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("C:/Users/alfre/Downloads/Robots/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("C:/Users/alfre/Downloads/Montserrat/static/Montserrat-Regular.ttf");
+}
+
+.page-container{
+    display: grid;
+    grid-template-areas:
+        "header-section header-section"
+        "photo-container photo-information"
+        "search-section search-section"
+        "footer-section-1 footer-section-1"
+    ;
+
+    grid-template-columns: 60fr 40fr;
+    gap: 1%;
+
+    font-family: 'Roboto';
+    background-image: linear-gradient(-45deg, #081a28 20%, #112d55 60%, #081a28 100%);
+
+}
+
+.header-section{
+    grid-area: header-section;
+    color: #ffebeb;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.photo-container{
+    grid-area: photo-container;
+    /*border-style: solid;*/
+    border-image: linear-gradient(to bottom, #c898cc, #9066a5, #c898cc) 1 1;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    
+}
+
+.photo-information{
+    grid-area: photo-information;
+    margin-right: 5%;
+    color: #ffebeb;
+}
+
+.photo-information > p{
+    text-align: justify;
+    font-family: Montserrat;
+}
+
+.search-section{
+    grid-area: search-section;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    color: #ffebeb;
+    font-family: Montserrat;
+}
+
+.search-new-photos{
+    display: grid;
+    /*grid-template-columns: 1fr 1fr;*/
+    grid-template-areas:
+        "p"
+        "input-date"
+        "input-date"
+        "get-photos-button"
+    ;
+    text-align: left;
+    
+    /*border-style: solid;
+    border-color: white;*/
+
+    min-width: min-content;
+    max-width: max-content;
+}
+
+.input-date{
+    grid-area: input-date;
+    display: grid;
+    grid-template-areas: 
+    "label input none";
+    /*display: inline-grid;
+    grid-template-rows: 1fr 1fr;*/
+    grid-template-columns: 1fr 1fr 2fr;
+    text-align: left;
+}
+
+.get-photos-button{
+    grid-area: get-photos-button;
+}
+
+.footer-section-1{
+    grid-area: footer-section-1;
+}
+
+.apodPhoto{
+    max-height: 90%; 
+    max-width: 90%;
+    margin-top: 4%;
+}
+
+.borders-gradient{
+    /*border-style: solid;*/
+    border-image: linear-gradient(to left, #c898cc, #9066a5, #c898cc) 1 1;
+}
+
+/*.page-container > .photo-container, .photo-information{
+    
+}*/
+
+/*
+.photoContainer{
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    gap: 1%;
+
+    background-image: linear-gradient(45deg, #081a28 20%, #112d55 40%, #081a28 60%, #112d55 80%, #081a28 100%);
+}
+
+.photoContainer > div{
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.photoDiv{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.darkest-blue{
+    background-color: #081a28;
+}
+
+.dark-pink{
+    background-color: #9066a5;
+}
+
+.light-pink{
+    background-color: #c898cc;
+}
+
+.dark-blue{
+    background-color: #112d55;
+    color: #ffffff;
+}
+*/
