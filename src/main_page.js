@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import './main_page.css'
 
@@ -16,8 +16,8 @@ class PictureOfTheDay extends React.Component{
     }
 
     componentDidMount(){
-
-        fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY", {
+        /*
+        fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2022-10-02", {
             method: 'GET'
         }).then(response => {
             if(response.ok){
@@ -36,32 +36,37 @@ class PictureOfTheDay extends React.Component{
             })
         })
         .catch(error => alert(error));
+        */
 
     }
 
     render(){
         return (
-            <div className='page-container'>
-                <div className='header-section borders-gradient'>
-                    <h1>Foto astronómica del día 1 de diciembre de 2022</h1>
-                </div>
-                
-                <div className='photo-container'>
-                    <a href={this.state.imageUrl} target='_blank'>
-                        <img className='apodPhoto' src={this.state.imageUrl} alt='image_test'/>
-                    </a>       
-                </div>
-
-                <PhotoInformation photoTitle={this.state.photoTitle} copyright={this.state.copyright} description={this.state.description}/>
-                
-                <div className='search-section borders-gradient'>
-                    <SearchNewPhotos></SearchNewPhotos>
-                </div>
-                
-                <div className='footer-section-1'>
+            <Fragment>
+                <div className='page-container-1'>
+                    <div className='header-section borders-gradient'>
+                        <h1>Foto astronómica del día 1 de diciembre de 2022</h1>
+                    </div>
                     
+                    <div className='photo-container'>
+                        <figure className='apod-figure'>
+                            <a href={this.state.imageUrl} target='_blank'>
+                                <img className='apod-image' src={this.state.imageUrl} alt='image_test'/>
+                            </a>
+                        </figure>
+                    </div>
+
+                    <PhotoInformation photoTitle={this.state.photoTitle} copyright={this.state.copyright} description={this.state.description}/>
+                    
+                    <div className='search-section borders-gradient'>
+                        <SearchNewPhotos></SearchNewPhotos>
+                    </div>
+                    
+                    <div className='footer-section'>
+                        <p>Coded with love by Tona Díaz.</p>
+                    </div>
                 </div>
-            </div>
+            </Fragment>
         );
     }
 }
@@ -97,12 +102,74 @@ class PhotoInformation extends React.Component{
     render(){
         return (
             <div className='photo-information'>
-            <h2>{this.props.photoTitle}</h2>
-            <h3>Copyright: {this.props.copyright}</h3>
-            <p>
-                {this.props.description}
-            </p>
-        </div>
+                <h2>{this.props.photoTitle}</h2>
+                <h3>Copyright: {this.props.copyright}</h3>
+                <p>
+                    {this.props.description}
+                </p>
+            </div>
+        )
+    }
+}
+
+class PhotosGallery extends React.Component{
+    render(){
+        return (
+            <div>
+                <div className='gallery-container'>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src='https://apod.nasa.gov/apod/image/2212/Mars-Stereo.png' alt='image_test'/>
+                        </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>
+                    </figure>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>
+                    </figure>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src='https://apod.nasa.gov/apod/image/2212/potm2211a.jpg' alt='image_test'/>
+                        </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>                            
+                    </figure>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        </a>
+                    </figure>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        </a>
+                    </figure>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        </a>
+                    </figure>
+
+                    <figure className='gallery-photo'>
+                        <a href={this.state.imageUrl} target='_blank'>
+                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        </a>
+                    </figure>
+                </div>
+            </div>
         )
     }
 }

@@ -8,21 +8,20 @@
     src: url("C:/Users/alfre/Downloads/Montserrat/static/Montserrat-Regular.ttf");
 }
 
-.page-container{
+/*body{
+    background-image: linear-gradient(-45deg, #081a28 20%, #112d55 60%, #081a28 100%);
+};*/
+
+.page-container-1{
     display: grid;
+    grid-template-columns: 60fr 40fr;
     grid-template-areas:
         "header-section header-section"
         "photo-container photo-information"
         "search-section search-section"
-        "footer-section-1 footer-section-1"
+        "footer-section footer-section"
     ;
-
-    grid-template-columns: 60fr 40fr;
-    gap: 1%;
-
     font-family: 'Roboto';
-    background-image: linear-gradient(-45deg, #081a28 20%, #112d55 60%, #081a28 100%);
-
 }
 
 .header-section{
@@ -31,22 +30,51 @@
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
+
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+        url("../public/backHead.jpg") no-repeat,
+        linear-gradient(#4e4376, #2b5876);
+        background-size: cover
+        ;
+
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.9);
+
+    height: 10vh;
 }
 
 .photo-container{
     grid-area: photo-container;
     /*border-style: solid;*/
-    border-image: linear-gradient(to bottom, #c898cc, #9066a5, #c898cc) 1 1;
-    border-top: 0px;
-    border-left: 0px;
-    border-bottom: 0px;
+    /*border-image: linear-gradient(to bottom, #c898cc, #9066a5, #c898cc) 1 1;*/
+    border-top: 1px;
+    border-left: 1px;
+    border-bottom: 1px;
+    margin-top: 5vh;
+}
+
+.apod-figure{
+    max-width: fit-content;
+    height: auto;
     
+}
+
+.apod-image{
+    max-width: 100%; 
+    height: auto;
+    background-color: rgb(214, 214, 214);
+    border-radius: 15px;
+    border: medium solid rgb(214, 214, 214);
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 0 1px 8px rgba(0, 0, 0, 0.9), 0 0 25px 10px rgba(0, 0, 0, 1);
 }
 
 .photo-information{
     grid-area: photo-information;
     margin-right: 5%;
+    margin-left: 5%;
     color: #ffebeb;
+    margin-top: 5vh;
 }
 
 .photo-information > p{
@@ -61,6 +89,23 @@
     border-right: 0px;
     color: #ffebeb;
     font-family: Montserrat;
+    justify-content: center;
+}
+
+.footer-section{
+    grid-area: footer-section;
+
+    /*background-color: #43304d;*/
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("../public/test_2.jpg") no-repeat,
+    linear-gradient(#4e4376, #2b5876);
+    background-size: cover
+    ;
+
+    box-shadow: 0 0 25px 2px rgba(0, 0, 0, 0.9);
+    height: 8vh;
+
+    margin-top: 2%;
 }
 
 .search-new-photos{
@@ -76,6 +121,8 @@
     
     /*border-style: solid;
     border-color: white;*/
+
+    margin: 0 auto;
 
     min-width: min-content;
     max-width: max-content;
@@ -96,20 +143,30 @@
     grid-area: get-photos-button;
 }
 
-.footer-section-1{
-    grid-area: footer-section-1;
-}
-
-.apodPhoto{
-    max-height: 90%; 
-    max-width: 90%;
-    margin-top: 4%;
-}
 
 .borders-gradient{
     /*border-style: solid;*/
     border-image: linear-gradient(to left, #c898cc, #9066a5, #c898cc) 1 1;
 }
+
+/*
+.gallery-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 20vw);
+    grid-gap: 15px;
+}
+*/
+
+.gallery-photo-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*max-height: 10%;*/
+    /*max-width: 10%;*/
+    /*object-fit: contain;*/
+}
+
 
 /*.page-container > .photo-container, .photo-information{
     
