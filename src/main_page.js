@@ -45,23 +45,19 @@ class PictureOfTheDay extends React.Component{
             <Fragment>
                 <div className='page-container-1'>
                     <div className='header-section borders-gradient'>
-                        <h1>Foto astronómica del día 1 de diciembre de 2022</h1>
+                        <h1>Fotos del 1 de noviembre del 2022 al 4 de noviembre del 2022</h1>
                     </div>
-                    
-                    <div className='photo-container'>
-                        <figure className='apod-figure'>
-                            <a href={this.state.imageUrl} target='_blank'>
-                                <img className='apod-image' src={this.state.imageUrl} alt='image_test'/>
-                            </a>
-                        </figure>
+                    <div>
+                        {/*
+                        <PhotoOfTheDay 
+                            imageUrl={this.state.imageUrl} 
+                            copyright={this.state.copyright} 
+                            photoTitle={this.state.photoTitle} 
+                            description={this.state.description}
+                        />
+                        */}
+                        <PhotosGallery></PhotosGallery>
                     </div>
-
-                    <PhotoInformation photoTitle={this.state.photoTitle} copyright={this.state.copyright} description={this.state.description}/>
-                    
-                    <div className='search-section borders-gradient'>
-                        <SearchNewPhotos></SearchNewPhotos>
-                    </div>
-                    
                     <div className='footer-section'>
                         <p>Coded with love by Tona Díaz.</p>
                     </div>
@@ -80,7 +76,7 @@ class SearchNewPhotos extends React.Component{
                     <InputDateLabeled labelText='Fecha de inicio: ' inputId='startDateId' />
                     <InputDateLabeled labelText='Fecha final: ' inputId='endDateId' />
                     <div className='get-photos-button'>
-                        <button>¡Buscar fotos!</button>
+                        <button class='search-button'>¡Buscar fotos!</button>
                     </div>
                 </form>
             </div>
@@ -113,13 +109,88 @@ class PhotoInformation extends React.Component{
 }
 
 class PhotosGallery extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            photosInfo: []
+        }
+    }
+
+
+    componentDidMount(){
+        const today = new Date();
+        console.log(today.toISOString().split('T')[0]);
+        let inFiveDays = new Date();
+        inFiveDays.setDate(today.getDate() + 28);
+        console.log(inFiveDays.toISOString().split('T')[0]);
+
+        const diffTime = Math.abs(inFiveDays - today);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        console.log(diffTime + " milliseconds");
+        console.log(diffDays + " days");
+
+        fetch("https://api.nasa.gov/planetary/apod?" + new URLSearchParams({
+            api_key: "DEMO_KEY",
+            start_date: "2022-11-01",
+            end_date: "2022-11-28",
+        }), 
+        {
+            method: 'GET'
+        }).then(response => {
+            if(response.ok){
+                return response.json();
+            }else{
+                throw new Error('Algo salió mal. Inténtalo más tarde.');
+            }
+        })
+        .then(data => {
+            console.log("Returned values: " + data);
+            console.log("Tamaño: " + data.length);
+
+            let reduced = data.reduce((filteredData, photoInfo) => {
+                if(photoInfo.media_type == 'image'){
+                    const filteredImageInfo = {
+                        title: photoInfo.title,
+                        date: photoInfo.date,
+                        url: photoInfo.url ? photoInfo.url : photoInfo.url,
+                        copyright: photoInfo.copyright ? photoInfo.copyright : null
+                    }
+                    filteredData.push(filteredImageInfo);
+                    console.log(filteredImageInfo.url);
+                }
+                return filteredData;
+            }, []);
+
+            console.log("Filtered tamaño: " + reduced.length);
+            this.setState({
+                photosInfo: reduced
+            })
+        })
+        .catch(error => alert(error));        
+    }
+
     render(){
         return (
             <div>
                 <div className='gallery-container'>
 
+                    {
+                        this.state.photosInfo.map(photoInfo => 
+                            <figure className='gallery-photo'>
+                                <a href={photoInfo.url} target='_blank'>
+                                    <img className='gallery-photo-img' src={photoInfo.url} alt='image_test'/>
+                                </a>
+                                <figcaption>
+                                    {photoInfo.date}
+                                </figcaption>
+                            </figure>
+                        )
+                    }
+
+                    {/* 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
+                        <a href="www.google.com" target='_blank'>
                             <img className='gallery-photo-img' src='https://apod.nasa.gov/apod/image/2212/Mars-Stereo.png' alt='image_test'/>
                         </a>
                         <figcaption>
@@ -128,8 +199,8 @@ class PhotosGallery extends React.Component{
                     </figure>
 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
-                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        <a href="www.google.com" target='_blank'>
+                            <img className='gallery-photo-img' src="https://apod.nasa.gov/apod/image/2211/Lobster_Blanco_4000.jpg" alt='image_test'/>
                         </a>
                         <figcaption>
                             This is a sample image
@@ -137,7 +208,7 @@ class PhotosGallery extends React.Component{
                     </figure>
 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
+                        <a href="www.google.com" target='_blank'>
                             <img className='gallery-photo-img' src='https://apod.nasa.gov/apod/image/2212/potm2211a.jpg' alt='image_test'/>
                         </a>
                         <figcaption>
@@ -146,31 +217,70 @@ class PhotosGallery extends React.Component{
                     </figure>
 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
-                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        <a href="www.google.com" target='_blank'>
+                            <img className='gallery-photo-img' src="https://apod.nasa.gov/apod/image/2211/M33-NOIR-HST-LL.jpg" alt='image_test'/>
                         </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>
                     </figure>
 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
-                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        <a href="www.google.com" target='_blank'>
+                            <img className='gallery-photo-img' src="https://apod.nasa.gov/apod/image/2211/PIA25287_insight.jpg" alt='image_test'/>
                         </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>
                     </figure>
 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
-                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        <a href="www.google.com" target='_blank'>
+                            <img className='gallery-photo-img' src="https://apod.nasa.gov/apod/image/2211/Lunar-Eclipse-South-Pole.jpg" alt='image_test'/>
                         </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>
                     </figure>
 
                     <figure className='gallery-photo'>
-                        <a href={this.state.imageUrl} target='_blank'>
-                            <img className='gallery-photo-img' src={this.state.imageUrl} alt='image_test'/>
+                        <a href="www.google.com" target='_blank'>
+                            <img className='gallery-photo-img' src="https://apod.nasa.gov/apod/image/2211/darksun_lafferty_1600.jpg" alt='image_test'/>
                         </a>
+                        <figcaption>
+                            This is a sample image
+                        </figcaption>
                     </figure>
+                    */}
                 </div>
             </div>
         )
+    }
+}
+
+class PhotoOfTheDay extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        return(
+            <div class='apod-container'>
+                <div className='photo-container'>
+                    <figure className='apod-figure'>
+                        <a href={this.props.imageUrl} target='_blank'>
+                            <img className='apod-image' src={this.props.imageUrl} alt='image_test'/>
+                        </a>
+                    </figure>
+                </div>
+
+                <PhotoInformation photoTitle={this.props.photoTitle} copyright={this.props.copyright} description={this.props.description}/>
+                
+                <div className='search-section borders-gradient'>
+                    <SearchNewPhotos></SearchNewPhotos>
+                </div>
+            </div>
+        );
     }
 }
 

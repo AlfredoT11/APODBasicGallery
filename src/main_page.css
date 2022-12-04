@@ -8,18 +8,12 @@
     src: url("C:/Users/alfre/Downloads/Montserrat/static/Montserrat-Regular.ttf");
 }
 
-/*body{
-    background-image: linear-gradient(-45deg, #081a28 20%, #112d55 60%, #081a28 100%);
-};*/
-
 .page-container-1{
     display: grid;
-    grid-template-columns: 60fr 40fr;
     grid-template-areas:
-        "header-section header-section"
-        "photo-container photo-information"
-        "search-section search-section"
-        "footer-section footer-section"
+        "header-section"
+        "apod-container"
+        "footer-section"
     ;
     font-family: 'Roboto';
 }
@@ -40,6 +34,16 @@
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.9);
 
     height: 10vh;
+}
+
+.apod-container{
+    grid-area: apod-container;
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    grid-template-areas:
+        "photo-container photo-information"
+        "search-section search-section"
+    ;
 }
 
 .photo-container{
@@ -128,6 +132,25 @@
     max-width: max-content;
 }
 
+.search-button{
+    background-color: #288552;
+    border: 2px solid #288552; /* Green */
+    color: #ffffff;
+    border-radius: 5px;
+    width: 100%;
+    font-family: 'Montserrat';
+    margin-top: 2%;
+}
+
+.search-button:hover{
+    background-color: #125731;
+    border: 2px solid #125731; 
+    color: #ffffff;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    font-family: 'Montserrat';
+}
+
 .input-date{
     grid-area: input-date;
     display: grid;
@@ -137,6 +160,15 @@
     grid-template-rows: 1fr 1fr;*/
     grid-template-columns: 1fr 1fr 2fr;
     text-align: left;
+    margin-bottom: 2%;
+}
+
+.input-date > input {
+    font-family: 'Montserrat';
+    border-color: #ffffff;
+    background-color: #ffffff;
+    border-radius: 3px;
+    height: 100%;
 }
 
 .get-photos-button{
@@ -149,19 +181,34 @@
     border-image: linear-gradient(to left, #c898cc, #9066a5, #c898cc) 1 1;
 }
 
-/*
+
 .gallery-container{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 20vw);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px;
+    row-gap: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
-*/
+
+.gallery-photo > figcaption{
+    margin-top: 2%;
+    color: white;
+    font: "Montserrat";
+}
+
+
 
 .gallery-photo-img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-color: rgb(214, 214, 214);
+    border-radius: 15px;
+    border: medium solid rgb(214, 214, 214);
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 0 1px 8px rgba(0, 0, 0, 0.9), 0 0 25px 10px rgba(0, 0, 0, 1);
     /*max-height: 10%;*/
     /*max-width: 10%;*/
     /*object-fit: contain;*/
