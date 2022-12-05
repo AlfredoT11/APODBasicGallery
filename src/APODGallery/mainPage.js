@@ -154,7 +154,7 @@ class MainView extends React.Component{
             <Fragment>
                 <div className='page-container-1'>
                     <div className='header-section'>
-                        <h1>Astronomy photo of the day</h1>
+                        <h1>Astronomy Picture of the Day</h1>
                     </div>
                     <div className='mainDiv'>
                         {mainViewComponent}
