@@ -1,30 +1,21 @@
 import React from 'react';
 
-import SearchNewPhotos from './searchPhotos';
-
 import './apod.css';
 
 class PhotoOfTheDay extends React.Component{
-    constructor(props){
-        super(props);
-    }
 
     render(){
         return(
-            <div class='apod-container'>
+            <div className='apod-container'>
                 <div className='photo-container'>
                     <figure className='apod-figure'>
-                        <a href={this.props.imageUrl} target='_blank'>
+                        <a href={this.props.imageUrl} target='_blank' rel='noreferrer'>
                             <img className='apod-image' src={this.props.imageUrl} alt='image_test'/>
                         </a>
                     </figure>
                 </div>
 
                 <PhotoInformation photoTitle={this.props.photoTitle} copyright={this.props.copyright} description={this.props.description}/>
-                
-                <div className='search-section'>
-                    <SearchNewPhotos searchClickFunction={this.props.searchClickFunction} />
-                </div>
             </div>
         );
     }

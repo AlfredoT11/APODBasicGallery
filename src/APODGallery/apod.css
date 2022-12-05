@@ -4,7 +4,6 @@
     grid-template-columns: 60fr 40fr;
     grid-template-areas:
         "photo-container photo-information"
-        "search-section search-section"
     ;
 }
 

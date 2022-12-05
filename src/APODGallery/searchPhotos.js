@@ -6,13 +6,32 @@ class SearchNewPhotos extends React.Component{
 
     constructor(props){
         super(props);
+        const today = new Date();
+        this.state = {
+            startDate: today.toISOString().split('T')[0],
+            endDate: today.toISOString().split('T')[0]
+        }
         console.log(props);
         this.handleSearchClick = this.handleSearchClick.bind(this);
+        this.handleDateChanged = this.handleDateChanged.bind(this);
     }
 
     handleSearchClick(e){
         e.preventDefault();
-        this.props.searchClickFunction();
+        this.props.searchClickFunction(this.state.startDate);
+    }
+
+    handleDateChanged(newDate, isStartDate){
+        if(isStartDate){
+            this.setState({
+                startDate: newDate
+            });
+        }else{
+            this.setState({
+                endDate: newDate
+            })
+        }
+        console.log(newDate + " " + isStartDate);
     }
 
     render(){
@@ -20,10 +39,10 @@ class SearchNewPhotos extends React.Component{
             <div className='search-new-photos'>
                 <p>¿No estás satisfecho con esta foto? ¡Busca alguna en un rango determinado!</p>
                 <form>
-                    <InputDateLabeled labelText='Fecha de inicio: ' inputId='startDateId' />
-                    <InputDateLabeled labelText='Fecha final: ' inputId='endDateId' />
+                    <InputDateLabeled labelText='Fecha de inicio: ' inputId='startDateId' isStartDate={true} handleDateChange={this.handleDateChanged}/>
+                    <InputDateLabeled labelText='Fecha final: ' inputId='endDateId' isStartDate={false} handleDateChange={this.handleDateChanged}/>
                     <div className='get-photos-button'>
-                        <button class='search-button' onClick={this.handleSearchClick}>¡Buscar fotos!</button>
+                        <button className='search-button' onClick={this.handleSearchClick}>¡Buscar fotos!</button>
                     </div>
                 </form>
             </div>
@@ -32,10 +51,30 @@ class SearchNewPhotos extends React.Component{
 }
 
 class InputDateLabeled extends React.Component{
+
+    constructor(props){
+        super(props);
+        const today = new Date();
+        this.state = {
+            selectedDate: today.toISOString().split('T')[0]
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e){
+        this.setState({
+            selectedDate: e.target.value
+        })
+        this.props.handleDateChange(e.target.value, this.props.isStartDate);
+    }
+
     render(){
+        const today = new Date();
+        const todayDate = today.toISOString().split('T')[0]
         return (
             <div className='input-date'>
-                <label for={this.props.inputId}>{this.props.labelText} </label><input type='date' id={this.props.inputId}></input>
+                <label htmlFor={this.props.inputId}>{this.props.labelText} </label>
+                <input type='date' id={this.props.inputId} onChange={this.handleChange} value={this.state.selectedDate} min="2015-01-01" max={todayDate} />
             </div>
         )
     }

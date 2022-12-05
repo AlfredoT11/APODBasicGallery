@@ -13,6 +13,7 @@
     grid-template-areas:
         "header-section"
         "apod-container"
+        "search-section"
         "footer-section"
     ;
     font-family: 'Roboto';
@@ -34,6 +35,10 @@
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.9);
 
     height: 10vh;
+}
+
+.mainDiv{
+    height: minmax(100%, auto);
 }
 
 .search-section{
