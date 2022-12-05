@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/APODBasicGallery/static/css/main.0adf641e.css",
-    "main.js": "/APODBasicGallery/static/js/main.552c2420.js",
+    "main.css": "/APODBasicGallery/static/css/main.c6199bb4.css",
+    "main.js": "/APODBasicGallery/static/js/main.10cff1af.js",
     "static/js/787.9d20e75f.chunk.js": "/APODBasicGallery/static/js/787.9d20e75f.chunk.js",
     "static/media/footerImage.jpg": "/APODBasicGallery/static/media/footerImage.9a36538ae5892279972d.jpg",
     "static/media/headerImage.jpg": "/APODBasicGallery/static/media/headerImage.90d0ffcfe812001cf9ad.jpg",
     "static/media/Montserrat-Regular.ttf": "/APODBasicGallery/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "static/media/Roboto-Light.ttf": "/APODBasicGallery/static/media/Roboto-Light.333da16a3f3cc391d087.ttf",
     "index.html": "/APODBasicGallery/index.html",
-    "main.0adf641e.css.map": "/APODBasicGallery/static/css/main.0adf641e.css.map",
-    "main.552c2420.js.map": "/APODBasicGallery/static/js/main.552c2420.js.map",
+    "main.c6199bb4.css.map": "/APODBasicGallery/static/css/main.c6199bb4.css.map",
+    "main.10cff1af.js.map": "/APODBasicGallery/static/js/main.10cff1af.js.map",
     "787.9d20e75f.chunk.js.map": "/APODBasicGallery/static/js/787.9d20e75f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0adf641e.css",
-    "static/js/main.552c2420.js"
+    "static/css/main.c6199bb4.css",
+    "static/js/main.10cff1af.js"
   ]
 }
