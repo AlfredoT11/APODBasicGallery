@@ -1,0 +1,49 @@
+.apod-container{
+    grid-area: apod-container;
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    grid-template-areas:
+        "photo-container photo-information"
+        "search-section search-section"
+    ;
+}
+
+.photo-container{
+    grid-area: photo-container;
+    /*border-style: solid;*/
+    /*border-image: linear-gradient(to bottom, #c898cc, #9066a5, #c898cc) 1 1;*/
+    border-top: 1px;
+    border-left: 1px;
+    border-bottom: 1px;
+    margin-top: 5vh;
+}
+
+.apod-figure{
+    max-width: fit-content;
+    height: auto;
+    
+}
+
+.apod-image{
+    max-width: 100%; 
+    height: auto;
+    background-color: rgb(214, 214, 214);
+    border-radius: 15px;
+    border: medium solid rgb(214, 214, 214);
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 0 1px 8px rgba(0, 0, 0, 0.9), 0 0 25px 10px rgba(0, 0, 0, 1);
+}
+
+.photo-information{
+    grid-area: photo-information;
+    margin-right: 5%;
+    margin-left: 5%;
+    color: #ffebeb;
+    margin-top: 5vh;
+}
+
+.photo-information > p{
+    text-align: justify;
+    font-family: Montserrat;
+}

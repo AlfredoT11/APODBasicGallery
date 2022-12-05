@@ -1,0 +1,29 @@
+.gallery-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    row-gap: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.gallery-photo > figcaption{
+    margin-top: 2%;
+    color: white;
+    font: "Montserrat";
+}
+
+.gallery-photo-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: rgb(214, 214, 214);
+    border-radius: 15px;
+    border: medium solid rgb(214, 214, 214);
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 0 1px 8px rgba(0, 0, 0, 0.9), 0 0 25px 10px rgba(0, 0, 0, 1);
+    /*max-height: 10%;*/
+    /*max-width: 10%;*/
+    /*object-fit: contain;*/
+}

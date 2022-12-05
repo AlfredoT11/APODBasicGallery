@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../../public/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("../../public/Montserrat-Regular.ttf");
+}
+
+.page-container-1{
+    display: grid;
+    grid-template-areas:
+        "header-section"
+        "apod-container"
+        "footer-section"
+    ;
+    font-family: 'Roboto';
+}
+
+.header-section{
+    grid-area: header-section;
+    color: #ffebeb;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+        url("../../public/headerImage.jpg") no-repeat,
+        linear-gradient(#4e4376, #2b5876);
+        background-size: cover
+        ;
+
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.9);
+
+    height: 10vh;
+}
+
+.search-section{
+    grid-area: search-section;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    color: #ffebeb;
+    font-family: Montserrat;
+    justify-content: center;
+}
+
+.footer-section{
+    grid-area: footer-section;
+
+    /*background-color: #43304d;*/
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("../../public/footerImage.jpg") no-repeat,
+    linear-gradient(#4e4376, #2b5876);
+    background-size: cover
+    ;
+
+    box-shadow: 0 0 25px 2px rgba(0, 0, 0, 0.9);
+    height: 8vh;
+
+    margin-top: 2%;
+}
+
+.search-new-photos{
+    display: grid;
+    /*grid-template-columns: 1fr 1fr;*/
+    grid-template-areas:
+        "p"
+        "input-date"
+        "input-date"
+        "get-photos-button"
+    ;
+    text-align: left;
+    
+    /*border-style: solid;
+    border-color: white;*/
+
+    margin: 0 auto;
+
+    min-width: min-content;
+    max-width: max-content;
+}
+
+.search-button{
+    background-color: #288552;
+    border: 2px solid #288552; /* Green */
+    color: #ffffff;
+    border-radius: 5px;
+    width: 100%;
+    font-family: 'Montserrat';
+    margin-top: 2%;
+}
+
+.search-button:hover{
+    background-color: #125731;
+    border: 2px solid #125731; 
+    color: #ffffff;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    font-family: 'Montserrat';
+}
+
+.input-date{
+    grid-area: input-date;
+    display: grid;
+    grid-template-areas: 
+    "label input none";
+    /*display: inline-grid;
+    grid-template-rows: 1fr 1fr;*/
+    grid-template-columns: 1fr 1fr 2fr;
+    text-align: left;
+    margin-bottom: 2%;
+}
+
+.input-date > input {
+    font-family: 'Montserrat';
+    border-color: #ffffff;
+    background-color: #ffffff;
+    border-radius: 3px;
+    height: 100%;
+}
+
+.get-photos-button{
+    grid-area: get-photos-button;
+}
