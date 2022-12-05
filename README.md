@@ -1,3 +1,7 @@
+# Astronomy Picture of the Day
+
+This is a little site to see photos about space science. The pictures are provided by NASA via their public API.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
