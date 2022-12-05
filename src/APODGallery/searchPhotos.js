@@ -11,7 +11,6 @@ class SearchNewPhotos extends React.Component{
             startDate: today.toISOString().split('T')[0],
             endDate: today.toISOString().split('T')[0]
         }
-        console.log(props);
         this.handleSearchClick = this.handleSearchClick.bind(this);
         this.handleDateChanged = this.handleDateChanged.bind(this);
     }
@@ -31,18 +30,16 @@ class SearchNewPhotos extends React.Component{
                 endDate: newDate
             })
         }
-        console.log(newDate + " " + isStartDate);
     }
 
     render(){
         return (
             <div className='search-new-photos'>
-                <p>¿No estás satisfecho con esta foto? ¡Busca alguna en un rango determinado!</p>
+                <p>You're not satisfied with today's photo? Look for (20) new ones!</p>
                 <form>
-                    <InputDateLabeled labelText='Fecha de inicio: ' inputId='startDateId' isStartDate={true} handleDateChange={this.handleDateChanged}/>
-                    <InputDateLabeled labelText='Fecha final: ' inputId='endDateId' isStartDate={false} handleDateChange={this.handleDateChanged}/>
+                    <InputDateLabeled labelText='Start date: ' inputId='startDateId' isStartDate={true} handleDateChange={this.handleDateChanged}/>
                     <div className='get-photos-button'>
-                        <button className='search-button' onClick={this.handleSearchClick}>¡Buscar fotos!</button>
+                        <button className='search-button' onClick={this.handleSearchClick}>Look new photos!</button>
                     </div>
                 </form>
             </div>
@@ -74,7 +71,7 @@ class InputDateLabeled extends React.Component{
         return (
             <div className='input-date'>
                 <label htmlFor={this.props.inputId}>{this.props.labelText} </label>
-                <input type='date' id={this.props.inputId} onChange={this.handleChange} value={this.state.selectedDate} min="2015-01-01" max={todayDate} />
+                <input type='date' id={this.props.inputId} onChange={this.handleChange} value={this.state.selectedDate} min='2015-01-01' max={todayDate} />
             </div>
         )
     }

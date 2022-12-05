@@ -5,17 +5,15 @@ import './gallery.css';
 class GalleryImage extends React.Component{
     constructor(props){
         super(props);
-        console.log(props);
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e){
         e.preventDefault();
-        console.log("Selecting image: " + this.props.title);
         this.props.selectImage({
             title: this.props.title,
             date: this.props.date,
-            hdurl: this.props.hdurl,
+            hdUrl: this.props.hdUrl ? this.props.hdUrl : this.props.url,
             url: this.props.url,
             copyright: this.props.copyright,
             description: this.props.description
@@ -43,9 +41,10 @@ class PhotosGallery extends React.Component{
                     {
                         this.props.photosInfo.map(photoInfo => 
                             <GalleryImage 
+                                key={photoInfo.url}
                                 title={photoInfo.title}
                                 date={photoInfo.date}
-                                hdurl={photoInfo.hdurl}
+                                hdUrl={photoInfo.hdUrl}
                                 url={photoInfo.url}
                                 copyright={photoInfo.copyright}
                                 description={photoInfo.description}
