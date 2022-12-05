@@ -71,7 +71,7 @@ class InputDateLabeled extends React.Component{
         return (
             <div className='input-date'>
                 <label htmlFor={this.props.inputId}>{this.props.labelText} </label>
-                <input type='date' id={this.props.inputId} onChange={this.handleChange} value={this.state.selectedDate} min='2015-01-01' max={todayDate} />
+                <input type='date' id={this.props.inputId} onChange={this.handleChange} value={this.state.selectedDate} min='1995-06-16' max={todayDate} />
             </div>
         )
     }
